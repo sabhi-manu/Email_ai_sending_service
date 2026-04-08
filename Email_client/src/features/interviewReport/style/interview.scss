@@ -1,0 +1,96 @@
+.interview {
+  padding: 30px;
+  color: #e2e8f0;
+
+  .interview__container {
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .interview__title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  /* NAV */
+  .interview__nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    list-style: none;
+  }
+
+  .interview__nav li {
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .interview__nav .active {
+    background: #a78bfa;
+  }
+
+  /* CONTENT */
+  .interview__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* QUESTION CARD */
+  .question-card {
+    padding: 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* ROADMAP */
+  .roadmap-card {
+    padding: 16px;
+    border-radius: 10px;
+    background: rgba(167,139,250,0.1);
+
+    ul{
+        list-style: none;
+    }
+  }
+
+  /* SKILLS */
+  .skill-gaps {
+    margin-top: 30px;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .skill-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skill-badge {
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: rgb(228, 217, 217);
+    }
+
+    .low {
+      background: #334155;
+    }
+
+    .medium {
+      background: #6d5f48;
+      
+    }
+
+    .high {
+      background: #ef4444;
+    }
+  }
+}
