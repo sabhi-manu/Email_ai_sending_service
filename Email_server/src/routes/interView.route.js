@@ -10,7 +10,7 @@ interviewRouter.post("/", authMiddleware, upload.single("resume"), interviewCont
 
 interviewRouter.get("/report/:reportId", authMiddleware, interviewController.getInterviewReportByIdController)
 
-
+interviewRouter.get("/reports", authMiddleware, interviewController.getAllInterviewReportController)
 
 
 export default interviewRouter

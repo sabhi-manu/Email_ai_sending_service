@@ -110,4 +110,4 @@ const getAllInterviewReportController = async (req,res,next)=>{
   }
 }
 
-export default { createInterviewController, getInterviewReportByIdController };
+export default { createInterviewController, getInterviewReportByIdController ,getAllInterviewReportController};

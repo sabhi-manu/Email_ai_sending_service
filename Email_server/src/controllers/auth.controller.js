@@ -83,7 +83,7 @@ const userLoginController = asyncHandler(async (req, res) => {
     process.env.JWT_SECRET,
     { expiresIn: "1d" },
   );
-
+console.log("login user details ===>",user )
   res.cookie("token", token);
   res.status(201).json({
     success: true,
