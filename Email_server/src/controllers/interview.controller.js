@@ -1,5 +1,6 @@
 import InterviewReportModel from "../models/interviewReport.model.js";
 import generateInterviewReport from "../services/ai.service.js";
+import generateResumeAi from "../services/aiResume.service.js";
 import AppErrorHandler from "../utils/errorHandler.js";
 import { PDFParse } from "pdf-parse";
 
@@ -110,4 +111,27 @@ const getAllInterviewReportController = async (req,res,next)=>{
   }
 }
 
-export default { createInterviewController, getInterviewReportByIdController ,getAllInterviewReportController};
+
+async function generateResumeController(req,res,next) {
+  try {
+    const resumefile = req.file;
+    const { selfDescription, jobDescription } = req.body; 
+    if (!jobDescription) {
+      throw new AppErrorHandler(400, "Job description is required.");
+    }
+    const resumeContext = await new PDFParse(Uint8Array.from(resumefile.buffer)).getText();
+    const pdfBuffer = await generateResumeAi({jobDescription, selfDescription, resume:resumeContext.text})
+
+    res.set({
+      "Content-Type": "application/pdf",
+      "Content-Disposition": 'attachment; filename="generated_resume.pdf"',
+    });
+    res.send(pdfBuffer);
+
+  } catch (error) {
+    console.error("Error generating resume:", error);
+    next(error);
+  }
+}
+
+export default { createInterviewController, getInterviewReportByIdController ,getAllInterviewReportController, generateResumeController};

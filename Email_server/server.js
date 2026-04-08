@@ -6,7 +6,8 @@ import { connectRedis } from "./src/config/redis/redis.js";
 
 // worker import .
 import notificationWorker from "./src/workers/notificationWorker.js";
-
+// import generateResumeAi from "./src/services/aiResume.service.js";
+// import { jobDescription, selfDescription, resume } from "./src/services/temp.js";
 
 
 const PORT =process.env.PORT || 8000
@@ -15,7 +16,7 @@ const PORT =process.env.PORT || 8000
     try {
      await  connectRedis()
        await connectDB()
-       
+      //  generateResumeAi({jobDescription, selfDescription, resume})
         app.listen(PORT)
        console.log("server running on port ",PORT)
 

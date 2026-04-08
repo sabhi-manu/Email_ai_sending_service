@@ -6,11 +6,12 @@ import interviewController from "../controllers/interview.controller.js"
 const interviewRouter = express.Router()
 
 
-interviewRouter.post("/", authMiddleware, upload.single("resume"), interviewController.createInterviewController)
+interviewRouter.post("/interview/", authMiddleware, upload.single("resume"), interviewController.createInterviewController)
 
-interviewRouter.get("/report/:reportId", authMiddleware, interviewController.getInterviewReportByIdController)
+interviewRouter.get("/interview/report/:reportId", authMiddleware, interviewController.getInterviewReportByIdController)
 
-interviewRouter.get("/reports", authMiddleware, interviewController.getAllInterviewReportController)
+interviewRouter.get("/interview/reports", authMiddleware, interviewController.getAllInterviewReportController)
 
+interviewRouter.post("/resume", authMiddleware, upload.single("resume"), interviewController.generateResumeController)
 
 export default interviewRouter

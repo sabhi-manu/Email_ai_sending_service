@@ -24,7 +24,7 @@ app.get("/test",(req,res)=>{
 
 
 app.use("/api/auth",authRouter)
-app.use("/api/ai/interview",interViewRoute)
+app.use("/api/ai",interViewRoute)
 
 app.use((err,req,res,next)=>{
    let errorStatusCode = err.statusCode || 500
