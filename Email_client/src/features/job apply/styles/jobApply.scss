@@ -1,0 +1,56 @@
+.job-email {
+  padding: 20px;
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  &__card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #c1bfc4;
+      
+    }
+
+    input[type="file"] {
+      background: rgb(175, 173, 173);
+      color: black;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #7c3aed;
+      color: white;
+      cursor: pointer;
+
+      &:disabled {
+        background: gray;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
