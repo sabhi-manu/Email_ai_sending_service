@@ -6,9 +6,11 @@ import puppeteer from "puppeteer"
 const  ai = new GoogleGenAI({apiKey:process.env.GOOGLE_GENAI_API_KEY})
 
 
-const resumePDFschema = new z.object({
-    html: z.string().describe("the html content of the resume convert into pdf by using library puppeteer")
-})
+const resumePDFschema = z.object({
+  html: z.string().describe(
+    "Complete HTML document for a professional resume, including inline CSS styling, proper structure with headings, sections like education, skills, experience, and formatted for A4 PDF"
+  ),
+});
 
 
 async function convertPDF(resumeHtml) {
@@ -25,7 +27,8 @@ async function convertPDF(resumeHtml) {
 
 
 async function generateResumeAi({jobDescription,resume,selfDescription}) {
-    
+    // const trimmedResume = resume?.slice(0, 2000);
+
       const prompt = `Generate resume for a candidate with the following details:
                         Resume: ${resume}
                         Self Description: ${selfDescription}
@@ -50,9 +53,25 @@ async function generateResumeAi({jobDescription,resume,selfDescription}) {
         }
     })
     
-   let resumContent =  JSON.parse(response.text)
-    const pdfBuffer = await convertPDF(resumContent.html)
-    return pdfBuffer;
+//    let resumContent =  JSON.parse(response.text)
+//     const pdfBuffer = await convertPDF(resumContent.html)
+//     return pdfBuffer;
+
+ let parsed;
+
+  try {
+    parsed = JSON.parse(response.text);
+  } catch (err) {
+    console.error("Invalid JSON from AI:", response.text);
+    throw new Error("AI returned invalid JSON");
+  }
+
+  if (!parsed.html || parsed.html.length < 100) {
+    throw new Error("Invalid resume HTML generated");
+  }
+
+  const pdfBuffer = await convertPDF(parsed.html);
+  return pdfBuffer;
 
 }
 

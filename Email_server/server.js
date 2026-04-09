@@ -8,7 +8,7 @@ import { connectRedis } from "./src/config/redis/redis.js";
 import notificationWorker from "./src/workers/notificationWorker.js";
 // import generateResumeAi from "./src/services/aiResume.service.js";
 // import { jobDescription, selfDescription, resume } from "./src/services/temp.js";
-
+import applyJobWorker from "./src/workers/applyJob.worker.js";
 
 const PORT =process.env.PORT || 8000
 

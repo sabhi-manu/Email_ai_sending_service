@@ -3,7 +3,7 @@ import authRouter from "./routes/auth.routes.js"
 import cookieParser from 'cookie-parser';
 import interViewRoute from "./routes/interView.route.js"
 import cors from "cors"
-
+import jobApplicationRoute from "./routes/jobApplication.routes.js"
 const app = express()
 
 app.use(express.json())
@@ -25,6 +25,7 @@ app.get("/test",(req,res)=>{
 
 app.use("/api/auth",authRouter)
 app.use("/api/ai",interViewRoute)
+app.use("/api/job-applications",jobApplicationRoute)
 
 app.use((err,req,res,next)=>{
    let errorStatusCode = err.statusCode || 500
