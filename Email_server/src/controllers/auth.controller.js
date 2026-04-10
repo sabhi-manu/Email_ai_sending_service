@@ -84,7 +84,11 @@ const userLoginController = asyncHandler(async (req, res) => {
     { expiresIn: "1d" },
   );
 console.log("login user details ===>",user )
-  res.cookie("token", token);
+  res.cookie("token",token, {
+  httpOnly: true,
+  secure: true,        
+  sameSite: "none"    
+});
   res.status(201).json({
     success: true,
     message: "user login successfully.",
@@ -140,7 +144,11 @@ const verifyOtp = asyncHandler(async (req, res) => {
     { expiresIn: "1d" },
   );
 
-  res.cookie("token", token);
+  res.cookie("token", token,  {
+  httpOnly: true,
+  secure: true,       
+  sameSite: "none"     
+});
 
   await notificationQueue.add(
     "welcome",
