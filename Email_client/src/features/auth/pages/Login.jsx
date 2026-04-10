@@ -16,6 +16,18 @@ const Login = () => {
         console.log("login successfully...")
         navigate("/")
     }
+
+
+    const guestLogin = async () => {
+    await handleLogin({
+        email: "sabhimanu707@gmail.com",
+        password: "1234"
+    })
+
+    navigate("/")
+}
+
+
     if(loading){
         <p>Loading...</p>
     }
@@ -33,6 +45,13 @@ const Login = () => {
                 <input type="password" name="password" id="password" placeholder='Enter Your Password...' onChange={(e)=>setPassword(e.target.value)} value={password} required />
             </div>
             <button className='button primary-button'>Submit</button>
+             <button
+        type="button"
+        className='button secondary-button'
+        onClick={guestLogin}
+    >
+        Login as Guest
+    </button>
         </form>
 
          <p> 
